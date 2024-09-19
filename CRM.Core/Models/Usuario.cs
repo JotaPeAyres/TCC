@@ -18,8 +18,9 @@ namespace CRM.Core.Models
 
         public DateTime DataInclusao { get; set; }
 
-        [ForeignKey("usuarioInclusao")]
-        public Guid usuarioInclusaoId { get; set; }
-        public virtual Usuario UsuarioInclusao { get; set; }
+        //Acho que não precisa desse usuario de inclusão
+        //[ForeignKey("usuarioInclusao")]
+        //public Guid usuarioInclusaoId { get; set; }
+        //public virtual Usuario UsuarioInclusao { get; set; }
     }
 }
