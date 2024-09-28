@@ -1,5 +1,6 @@
 ﻿namespace CRM.Api.Common.Api;
 
-public interface IEndpoint
+public interface IEndpoint 
 {
+    static abstract void Map(IEndpointRouteBuilder app);
 }

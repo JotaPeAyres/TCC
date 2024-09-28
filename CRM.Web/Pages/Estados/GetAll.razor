@@ -1,0 +1,22 @@
+﻿@page "/estados"
+@inherits GetAllEstadosPage
+
+<MudText Typo="Typo.h3"> Estados</MudText>
+<div class="d-flex justify-end">
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        StartIcon="@Icons.Material.Rounded.Add"
+        Href="/estados/adicionar">
+        Novo Estado
+    </MudButton>
+</div>
+
+<MudDataGrid Class="mt-4"
+    Items="@Estados"
+    Filterable="true">
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="#" />
+        <PropertyColumn Property="x => x.Nome" Title="Estado" />
+    </Columns>
+</MudDataGrid>

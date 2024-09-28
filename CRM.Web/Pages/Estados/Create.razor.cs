@@ -1,23 +1,32 @@
 ﻿using CRM.Core.Handlers;
-using CRM.Core.Requests.Cidades;
+using CRM.Core.Requests.Estados;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace CRM.Web.Pages.Cidades;
+namespace CRM.Web.Pages.Estados;
 
-public partial class CreateCidadePage : ComponentBase
+public partial class CreateEstadoPage : ComponentBase
 {
     #region Properties
 
     public bool IsBusy { get; set; } = false;
-    public CreateCidadeRequest InputModel { get; set; } = new();
+    public CreateEstadoRequest InputModel { get; set; } = new();
+
+    public string[] estados =
+    {
+        "AC", "AL", "AP", "AM", "BA", "CE",
+        "DF", "ES", "GO", "MA", "MT", "MS",
+        "MG", "PA", "PB", "PR", "PE", "PI",
+        "RJ", "RN", "RS", "RO", "RR", "SC",
+        "SP", "SE", "TO"
+    };
 
     #endregion
 
     #region Services
 
     [Inject]
-    public ICidadeHandler Handler { get; set; } = null!;
+    public IEstadoHandler Handler { get; set; } = null!;
 
     [Inject]
     public NavigationManager NavigationManager { get; set; } = null!;
@@ -36,10 +45,10 @@ public partial class CreateCidadePage : ComponentBase
         try
         {
             var result = await Handler.CreateAsync(InputModel);
-            if (result.IsSuccess) 
+            if (result.IsSuccess)
             {
                 Snackbar.Add(result.Message, Severity.Success);
-                NavigationManager.NavigateTo("/cidades");
+                NavigationManager.NavigateTo("/estados");
             }
             else
                 Snackbar.Add(result.Message, Severity.Error);

@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CRM.Core.Models
+namespace CRM.Core.Models;
+
+public class Estado
 {
-    public class Estado
-    {
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        public string Nome { get; set; }
+    public string Nome { get; set; } = string.Empty;
 
-        public DateTime DataInclusao { get; set; }
+    public DateTime DataInclusao { get; set; }
 
-        public string SiglaEstado { get; set; }
+    public string SiglaEstado { get; set; } = string.Empty;
 
-        [ForeignKey("usuarioInclusao")]
-        public Guid usuarioInclusaoId { get; set; }
-        public virtual Usuario UsuarioInclusao { get; set; }
-    }
+    [ForeignKey("usuarioInclusao")]
+    public Guid usuarioInclusaoId { get; set; }
+    public virtual Usuario? UsuarioInclusao { get; set; }
 }

@@ -28,7 +28,7 @@ public class CidadeHandler(IHttpClientFactory httpClientFactory) : ICidadeHandle
         => await _client.GetFromJsonAsync<PagedResponse<List<Cidade>?>>($"vi/cidades/")
             ?? new PagedResponse<List<Cidade>?>(null, 400, "Não foi possível obter as cidades");
 
-    public async Task<Response<Cidade?>> GetByIdAsync(GetCidadeById request)
+    public async Task<Response<Cidade?>> GetByIdAsync(GetCidadeByIdRequest request)
         => await _client.GetFromJsonAsync<Response<Cidade?>>($"vi/cidades/{request.Id}")
             ?? new Response<Cidade?>(null, 400, "Não foi possível obter a cidade");
 

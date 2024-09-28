@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.Core", "CRM.Core\CRM.Core.csproj", "{6735E861-1E28-466B-8B63-8C062183845B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.Api", "CRM.Api\CRM.Api.csproj", "{217B848B-FED2-4E26-9B63-3915CA6DD994}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6735E861-1E28-466B-8B63-8C062183845B} = {6735E861-1E28-466B-8B63-8C062183845B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

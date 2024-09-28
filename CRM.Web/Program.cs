@@ -19,5 +19,6 @@ builder.Services
     });
 
 builder.Services.AddTransient<ICidadeHandler, CidadeHandler>();
+builder.Services.AddTransient<IEstadoHandler, EstadoHandler>();
 
 await builder.Build().RunAsync();

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Core.Requests.Cidades;
+namespace CRM.Core.Requests.Estados;
 
-public class GetCidadeById : Request
+public class DeleteEstadoRequest : Request
 {
     public Guid Id { get; set; }
 }

@@ -1,0 +1,27 @@
+﻿@page "/estados/adicionar"
+@inherits CreateEstadoPage
+
+<MudText Typo="Typo.h3">Novo Estado</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnInvalidSubmit="OnValidSubmitAsync">
+        <MudTextField Label="Nome"
+            HelperText="Campo obrigatório"
+            @bind-Value="InputModel.Nome"
+            For="@(() => InputModel.Nome)" />
+        <MudStack>
+            <MudSelect Label="Sigla"
+                T="string"
+                MultiSelection="false"
+                HelperText="Campo obrigatório"
+                @bind-Value="InputModel.SiglaEstado"
+                For="@(() => InputModel.SiglaEstado)">
+
+                @foreach(var estado in estados)
+                {
+                    <MudSelectItem Value="estado">@estado</MudSelectItem>
+                }
+            </MudSelect>
+        </MudStack>
+    </EditForm>
+</MudPaper>

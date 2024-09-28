@@ -1,5 +1,10 @@
 ﻿namespace CRM.Api.Common.Api;
 
-public class AppExtension
+public static class AppExtension
 {
+    public static void ConfigureDevEnvironment(this WebApplication app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 }
