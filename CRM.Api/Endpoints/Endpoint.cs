@@ -17,7 +17,7 @@ public static class Endpoint
 
         endpoints.MapGroup("v1/cidades")
             .WithTags("Cidades")
-            .MapEndpoint<CreateCidadeEndpoint>()
+            .MapEndpoint<CreateClienteEndpoint>()
             .MapEndpoint<UpdateCidadeEndpoint>()
             .MapEndpoint<DeleteCidadeEndpoint>()
             .MapEndpoint<GetCidadeByIdEndpoint>()

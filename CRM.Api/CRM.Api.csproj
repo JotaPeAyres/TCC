@@ -18,6 +18,11 @@
   <ItemGroup>
     <Folder Include="Data\Mappings\" />
     <Folder Include="Data\Migrations\" />
+    <Folder Include="Endpoints\Usuario\" />
+    <Folder Include="Endpoints\Tarefa\" />
+    <Folder Include="Endpoints\Proposta\" />
+    <Folder Include="Endpoints\Produto\" />
+    <Folder Include="Endpoints\Pedido\" />
     <Folder Include="Handlers\" />
   </ItemGroup>
 
