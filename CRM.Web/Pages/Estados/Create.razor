@@ -5,6 +5,8 @@
 
 <MudPaper Class="pa-8 mt-4">
     <EditForm Model="@InputModel" OnInvalidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+
         <MudTextField Label="Nome"
             HelperText="Campo obrigatório"
             @bind-Value="InputModel.Nome"
@@ -17,11 +19,24 @@
                 @bind-Value="InputModel.SiglaEstado"
                 For="@(() => InputModel.SiglaEstado)">
 
-                @foreach(var estado in estados)
+                @foreach(var sigla in Siglas)
                 {
-                    <MudSelectItem Value="estado">@estado</MudSelectItem>
+                    <MudSelectItem Value="sigla">@sigla</MudSelectItem>
                 }
             </MudSelect>
         </MudStack>
+
+        @if (IsBusy)
+        {
+            <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+        }
+        else
+        {
+            <MudButton ButtonType="ButtonType.Submit" 
+                Variant="Variant.Filled" 
+                Color="Color.Primary">
+                Salvar
+            </MudButton>
+        }
     </EditForm>
 </MudPaper>

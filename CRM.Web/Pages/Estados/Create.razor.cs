@@ -12,7 +12,7 @@ public partial class CreateEstadoPage : ComponentBase
     public bool IsBusy { get; set; } = false;
     public CreateEstadoRequest InputModel { get; set; } = new();
 
-    public string[] estados =
+    public string[] Siglas =
     {
         "AC", "AL", "AP", "AM", "BA", "CE",
         "DF", "ES", "GO", "MA", "MT", "MS",

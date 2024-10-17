@@ -18,5 +18,22 @@
     <Columns>
         <PropertyColumn Property="x => x.Id" Title="#" />
         <PropertyColumn Property="x => x.Nome" Title="Estado" />
+        <PropertyColumn Property="x => x.UsuarioInclusao.Name" Title="Usuário Inclusão" />
+
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton 
+                        Icon="@Icons.Material.Filled.Delete"
+                        Color="Color.Error"
+                        OnClick="() => OnDeleteButtonClickedAsync(context.Item.Id, context.Item.Nome)" />
+                    <MudIconButton 
+                        Icon="@Icons.Material.Filled.Edit"
+                        Color="Color.Default"
+                        @* OnClick="() => OnEditButtonClickedAsync(context.Item.Id, context.Item.Nome)" *@
+                        Href="/estados/editar" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
     </Columns>
 </MudDataGrid>

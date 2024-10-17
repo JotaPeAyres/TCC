@@ -8,7 +8,7 @@ namespace CRM.Web.Handlers;
 
 public class CidadeHandler(IHttpClientFactory httpClientFactory) : ICidadeHandler
 {
-    private readonly HttpClient _client = httpClientFactory.CreateClient(WebConfiguration.HttpClientName);
+    private readonly HttpClient _client = httpClientFactory.CreateClient(Configuration.HttpClientName);
 
     public async Task<Response<Cidade?>> CreateAsync(CreateCidadeRequest request)
     {

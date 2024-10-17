@@ -14,5 +14,5 @@ public class Estado
 
     [ForeignKey("usuarioInclusao")]
     public Guid usuarioInclusaoId { get; set; }
-    public virtual Usuario? UsuarioInclusao { get; set; }
+    public virtual Usuario UsuarioInclusao { get; set; }
 }

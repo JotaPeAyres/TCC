@@ -11,8 +11,8 @@ namespace CRM.Core.Models
     {
 
         public Guid Id { get; set; }
-        public string Numero { get; set; }
-        public string Cep {  get; set; }
+        public string Logradouro { get; set; } = string.Empty;
+        public string Cep {  get; set; } = string.Empty;
 
         public DateTime DataInclusao { get; set; }
 

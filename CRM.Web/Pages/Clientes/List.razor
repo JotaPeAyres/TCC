@@ -1,0 +1,49 @@
+﻿@page "/clientes"
+@inherits ListClientePage
+
+<MudText Typo="Typo.h3"> Clientes</MudText>
+<div class="d-flex justify-end">
+    <MudButton Variant="Variant.Filled"
+               Color="Color.Primary"
+               StartIcon="@Icons.Material.Rounded.Add"
+               Href="/clientes/adicionar">
+        Novo Cliente
+    </MudButton>
+</div>
+
+<MudDataGrid Class="mt-4"
+             Items="@Clientes"
+             Filterable="true"
+             Hideable="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Clientes</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="SearchTerm"
+                      Placeholder="Filtra..."
+                      Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      Immediate="true"
+                      IconSize="Size.Medium"
+                      Class="mt-0">
+        </MudTextField>
+    </ToolBarContent>
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="#" />
+        <PropertyColumn Property="x => x.RazaoSocial" Title="Razão Social" />
+        <PropertyColumn Property="x => x.NomeFantasia" Title="Nome Fantasia" />
+        <PropertyColumn Property="x => x.UsuarioInclusao.Name" Title="Usuário Inclusão" />
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Href="@($"/cidades/editar{context.Item.Id}")"
+                                   Color="Color.Default" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                   Color="Color.Error"
+                                   aria-label="Excluir"
+                                   OnClick="() => OnDeleteButtonClickedAsync(context.Item.Id, context.Item.Nome)" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>

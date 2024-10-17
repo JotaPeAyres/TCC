@@ -1,28 +1,29 @@
 ﻿using CRM.Core.Handlers;
 using CRM.Core.Models;
-using CRM.Core.Requests.Estados;
+using CRM.Core.Requests.Cidades;
+using CRM.Core.Requests.Cliente;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace CRM.Web.Pages.Estados;
+namespace CRM.Web.Pages.Clientes;
 
-public partial class GetAllEstadosPage : ComponentBase
+public partial class ListClientePage : ComponentBase
 {
     #region Properties
 
     public bool IsBusy { get; set; } = false;
-    public List<Estado> Estados { get; set; } = [];
+    public List<Cliente> Clientes { get; set; } = [];
+    public string SearchTerm { get; set; } = string.Empty;
 
     #endregion
 
     #region Services
 
     [Inject]
-    public IEstadoHandler Handler { get; set; } = null!;
+    public IClienteHandler Handler { get; set; } = null!;
 
     [Inject]
     public IDialogService Dialog { get; set; } = null!;
-
 
     [Inject]
     public ISnackbar Snackbar { get; set; } = null!;
@@ -36,10 +37,10 @@ public partial class GetAllEstadosPage : ComponentBase
         IsBusy = true;
         try
         {
-            var request = new GetAllEstadosRequest();
+            var request = new GetAllClientesRequest();
             var result = await Handler.GetAllAsync(request);
             if (result.IsSuccess)
-                Estados = result.Data ?? [];
+                Clientes = result.Data ?? [];
         }
         catch (Exception ex)
         {
@@ -50,11 +51,13 @@ public partial class GetAllEstadosPage : ComponentBase
 
     #endregion
 
+    #region Methods
+
     public async void OnDeleteButtonClickedAsync(Guid id, string title)
     {
         var result = await Dialog.ShowMessageBox(
             "ATENÇÃO",
-            $"Ao prosseguir o estado {title} será removido. Deseja continuar?",
+            $"Ao prosseguir o cliente {title} será removido. Deseja continuar?",
             yesText: "Excluir",
             cancelText: "Cancelar");
 
@@ -68,17 +71,36 @@ public partial class GetAllEstadosPage : ComponentBase
     {
         try
         {
-            var request = new DeleteEstadoRequest
-            {
-                Id = id
-            };
+            var request = new DeleteClienteRequest { /*Id = id*/ };
             await Handler.DeleteAsync(request);
-            Estados.RemoveAll(x => x.Id == id);
-            Snackbar.Add($"Estado {title} removido", Severity.Info);
+            Clientes.RemoveAll(x => x.Id == id);
+            Snackbar.Add($"Cliente {title} removido", Severity.Info);
         }
         catch (Exception ex)
         {
             Snackbar.Add(ex.Message, Severity.Error);
         }
     }
+
+    public Func<Cliente, bool> Filter => category =>
+    {
+        if (string.IsNullOrWhiteSpace(SearchTerm))
+            return true;
+
+        if (category.Id.ToString().Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        if (category.RazaoSocial.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        if (category.Documento.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        if (category.NomeFantasia.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        return false;
+    };
+
+    #endregion
 }

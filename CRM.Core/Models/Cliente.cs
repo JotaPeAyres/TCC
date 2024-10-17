@@ -12,9 +12,9 @@ namespace CRM.Core.Models
 
         public Guid Id { get; set; }
 
-        public string RazaoSocial { get; set; }
-        public string NomeFantasia { get; set; }
-        public string Documento { get; set; }
+        public string RazaoSocial { get; set; } = string.Empty;
+        public string NomeFantasia { get; set; } = string.Empty;
+        public string Documento { get; set; } = string.Empty;
 
         [ForeignKey("usuarioInclusao")]
         public Guid usuarioInclusaoId { get; set; }

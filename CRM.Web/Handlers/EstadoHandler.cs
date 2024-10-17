@@ -8,7 +8,7 @@ namespace CRM.Web.Handlers;
 
 public class EstadoHandler(IHttpClientFactory httpClientFactory) : IEstadoHandler
 {
-    private readonly HttpClient _client = httpClientFactory.CreateClient(WebConfiguration.HttpClientName);
+    private readonly HttpClient _client = httpClientFactory.CreateClient(Configuration.HttpClientName);
 
     public async Task<Response<Estado?>> CreateAsync(CreateEstadoRequest request)
     {

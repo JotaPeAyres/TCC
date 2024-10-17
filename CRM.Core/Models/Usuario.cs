@@ -12,15 +12,10 @@ namespace CRM.Core.Models
 
         public Guid Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Senha { get; set; }
+        public string Senha { get; set; } = string.Empty;
 
         public DateTime DataInclusao { get; set; }
-
-        //Acho que não precisa desse usuario de inclusão
-        //[ForeignKey("usuarioInclusao")]
-        //public Guid usuarioInclusaoId { get; set; }
-        //public virtual Usuario UsuarioInclusao { get; set; }
     }
 }
