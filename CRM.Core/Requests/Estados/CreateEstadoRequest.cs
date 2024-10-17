@@ -15,4 +15,9 @@ public class CreateEstadoRequest : Request
 
     [Required(ErrorMessage = "Sigla inválida")]
     public string SiglaEstado { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Data inválida")]
+    public DateTime? DataInclusao { get; set; }
+
+
 }

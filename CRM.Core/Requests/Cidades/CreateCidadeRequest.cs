@@ -15,4 +15,10 @@ public class CreateCidadeRequest : Request
 
     [Required(ErrorMessage = "Estado inválido")]
     public Guid EstadoId { get; set; }
+
+    [Required(ErrorMessage = "Data inclusão inválida")]
+    public DateTime? DataInclusao { get; set; }
+
+    [Required(ErrorMessage = "Usuário inválido")]
+    public Guid UsuarioId { get; set; }
 }
