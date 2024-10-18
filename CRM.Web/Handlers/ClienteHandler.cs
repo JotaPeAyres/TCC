@@ -2,6 +2,7 @@
 using CRM.Core.Models;
 using CRM.Core.Requests.Cliente;
 using CRM.Core.Responses;
+using System.Net.Http.Json;
 
 namespace CRM.Web.Handlers;
 
@@ -9,28 +10,32 @@ public class ClienteHandler(IHttpClientFactory httpClientFactory) : IClienteHand
 {
     private readonly HttpClient _client = httpClientFactory.CreateClient(Configuration.HttpClientName);
 
-    public Task<Response<Cliente?>> CreateAsync(CreateClienteRequest request)
+    public async Task<Response<Cliente?>> CreateAsync(CreateClienteRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _client.PostAsJsonAsync("v1/cliente", request);
+        return await result.Content.ReadFromJsonAsync<Response<Cliente?>>()
+            ?? new Response<Cliente?>(null, 400, "Falha ao criar cliente");
     }
 
-    public Task<Response<Cliente?>> DeleteAsync(DeleteClienteRequest request)
+    public async Task<Response<Cliente?>> DeleteAsync(DeleteClienteRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _client.DeleteAsync($"v1/cliente/{request.Id}");
+        return await result.Content.ReadFromJsonAsync<Response<Cliente?>>()
+            ?? new Response<Cliente?>(null, 400, "Falha ao excluir cliente");
     }
 
-    public Task<PagedResponse<List<Cliente>?>> GetAllAsync(GetAllClientesRequest request)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<PagedResponse<List<Cliente>?>> GetAllAsync(GetAllClientesRequest request)
+        => await _client.GetFromJsonAsync<PagedResponse<List<Cliente>?>>($"vi/cliente/")
+            ?? new PagedResponse<List<Cliente>?>(null, 400, "Não foi possível obter os clientes");
 
-    public Task<Response<Cliente?>> GetByIdAsync(GetClienteByIdRequest request)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Response<Cliente?>> GetByIdAsync(GetClienteByIdRequest request)
+        => await _client.GetFromJsonAsync<Response<Cliente?>>($"vi/cliente/{request.Id}")
+            ?? new Response<Cliente?>(null, 400, "Não foi possível obter o cliente");
 
-    public Task<Response<Cliente?>> UpdateAsync(UpdateClienteRequest request)
+    public async Task<Response<Cliente?>> UpdateAsync(UpdateClienteRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _client.PutAsJsonAsync($"v1/cliente/{request.Id}", request);
+        return await result.Content.ReadFromJsonAsync<Response<Cliente?>>()
+            ?? new Response<Cliente?>(null, 400, "Falha ao atualizar cliente");
     }
 }
