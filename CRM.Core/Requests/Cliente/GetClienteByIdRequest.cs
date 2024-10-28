@@ -8,5 +8,6 @@ namespace CRM.Core.Requests.Cliente
 {
     public class GetClienteByIdRequest : Request
     {
+        public Guid Id { get; set; }
     }
 }

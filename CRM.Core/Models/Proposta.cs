@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CRM.Core.Models
 {
@@ -17,7 +12,7 @@ namespace CRM.Core.Models
 
         [ForeignKey("usuarioInclusao")]
         public Guid usuarioInclusaoId { get; set; }
-        public virtual Usuario UsuarioInclusao { get; set; }
+        public virtual User UsuarioInclusao { get; set; }
 
         [ForeignKey("StatusProposta")]
         public Guid statusPropostaId { get; set; }

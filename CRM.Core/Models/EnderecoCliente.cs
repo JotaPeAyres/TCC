@@ -16,10 +16,6 @@ namespace CRM.Core.Models
 
         public DateTime DataInclusao { get; set; }
 
-        [ForeignKey("Cliente")]
-        public Guid clienteId { get; set; }
-        public virtual Cliente Cliente { get; set; }
-
         [ForeignKey("Estado")]
         public Guid estadoId { get; set; }
         public virtual Estado Estado { get; set; }
@@ -30,6 +26,6 @@ namespace CRM.Core.Models
 
         [ForeignKey("usuarioInclusao")]
         public Guid usuarioInclusaoId { get; set; }
-        public virtual Usuario UsuarioInclusao { get; set; }
+        public virtual User UsuarioInclusao { get; set; }
     }
 }

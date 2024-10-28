@@ -8,5 +8,6 @@ namespace CRM.Core.Requests.Usuario
 {
     public class GetUsuarioByIdRequest : Request
     {
+        public Guid Id { get; set; }
     }
 }

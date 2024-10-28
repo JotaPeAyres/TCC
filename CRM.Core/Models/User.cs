@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Core.Models
 {
-    public class Usuario
+    public class User
     {
 
         public Guid Id { get; set; }

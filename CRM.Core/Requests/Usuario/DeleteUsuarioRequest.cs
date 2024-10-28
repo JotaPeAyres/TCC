@@ -8,5 +8,6 @@ namespace CRM.Core.Requests.Usuario
 {
     public class DeleteUsuarioRequest : Request
     {
+        public Guid Id { get; set; }
     }
 }

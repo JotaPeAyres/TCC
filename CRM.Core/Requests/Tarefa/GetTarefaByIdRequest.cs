@@ -8,5 +8,6 @@ namespace CRM.Core.Requests.Tarefa
 {
     public class GetTarefaByIdRequest : Request
     {
+        public Guid Id { get; set; }
     }
 }

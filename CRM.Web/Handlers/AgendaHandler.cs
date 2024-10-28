@@ -30,7 +30,7 @@ public class AgendaHandler(IHttpClientFactory httpClientFactory) : IAgendaHandle
 
     public async Task<Response<Agenda?>> GetByIdAsync(GetAgendaByIdRequest request)
         => await _client.GetFromJsonAsync<Response<Agenda?>>($"vi/agenda/{request.Id}")
-            ?? new Response<Tarefa?>(null, 400, "Não foi possível obter a agenda");
+            ?? new Response<Agenda?>(null, 400, "Não foi possível obter a agenda");
 
     public async Task<Response<Agenda?>> UpdateAsync(UpdateAgendaRequest request)
     {

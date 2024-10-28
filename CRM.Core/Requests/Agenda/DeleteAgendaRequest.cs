@@ -8,5 +8,6 @@ namespace CRM.Core.Requests.Agenda
 {
     public class DeleteAgendaRequest : Request
     {
+        public Guid Id { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace CRM.Core.Models
 
         [ForeignKey("usuarioInclusao")]
         public Guid usuarioInclusaoId { get; set; }
-        public virtual Usuario UsuarioInclusao { get; set; }
+        public virtual User UsuarioInclusao { get; set; }
 
         public DateTime DataInclusao { get; set; }
     }

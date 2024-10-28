@@ -21,5 +21,5 @@ public class Cidade
 
     [ForeignKey("UsuarioInclusao")]
     public Guid UsuarioInclusaoId { get; set; }
-    public virtual Usuario UsuarioInclusao { get; set; } 
+    public virtual User UsuarioInclusao { get; set; } 
 }

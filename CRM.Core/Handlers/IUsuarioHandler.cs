@@ -6,10 +6,10 @@ namespace CRM.Core.Handlers
 {
     public interface IUsuarioHandler
     {
-        Task<Response<Usuario?>> CreateAsync(CreateUsuarioRequest request);
-        Task<Response<Usuario?>> UpdateAsync(UpdateUsuarioRequest request);
-        Task<Response<Usuario?>> DeleteAsync(DeleteUsuarioRequest request);
-        Task<Response<Usuario?>> GetByIdAsync(GetUsuarioByIdRequest request);
-        Task<PagedResponse<List<Usuario>?>> GetAllAsync(GetAllUsuariosRequest request);
+        Task<Response<User?>> CreateAsync(CreateUsuarioRequest request);
+        Task<Response<User?>> UpdateAsync(UpdateUsuarioRequest request);
+        Task<Response<User?>> DeleteAsync(DeleteUsuarioRequest request);
+        Task<Response<User?>> GetByIdAsync(GetUsuarioByIdRequest request);
+        Task<PagedResponse<List<User>?>> GetAllAsync(GetAllUsuariosRequest request);
     }
 }
